@@ -1,3 +1,25 @@
-<p>
-  user-create works!
-</p>
+<div *ngIf="form; else loading">
+  <form [formGroup]="form" (ngSubmit)="submit()">
+
+    <div class="form-control" >
+      <label for="title">name</label>
+      <input type="text" id="first_name" formControlName="first_name">
+    </div>
+    <div class="form-control" >
+      <label for="title">surname</label>
+      <input type="text" id="last_name" formControlName="last_name">
+    </div>
+    <div class="form-control" >
+      <label for="title">gender</label>
+      <input type="text" id="gender" formControlName="gender">
+    </div>
+    <div class="form-control">
+      <label for="title">email</label>
+      <input type="text" id="email" formControlName="email">
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+  </form>
+</div>
+<ng-template #loading>
+  <p class="text-center">Loading...</p>
+</ng-template>

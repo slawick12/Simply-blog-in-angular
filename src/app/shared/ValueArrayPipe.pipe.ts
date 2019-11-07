@@ -1,13 +1,10 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: 'valueArray'
+  name: "valueArray"
 })
 export class ValueArrayPipePipe implements PipeTransform {
-
   transform(value: any, args?: any): any {
-    return Object.values(value) 
-    
+    return Object.values(value);
   }
-
 }

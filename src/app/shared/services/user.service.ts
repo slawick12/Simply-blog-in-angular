@@ -1,21 +1,54 @@
-import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { Injectable, ViewChild, AfterViewChecked, AfterViewInit } from "@angular/core";
+import { HttpClient, HttpParams, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { User } from "./interfaces";
+import { User, FbCreateResponse } from "./interfaces";
 import { environment } from "src/environments/environment";
-import { map } from "rxjs/operators";
-import { Key } from "protractor";
-
+import { map, count } from "rxjs/operators";
+import { HeaderInterceptor } from "../services/user.interceptor";
 @Injectable({
   providedIn: "root"
 })
 export class UserService {
-  user: any;
+  
+  
   constructor(private http: HttpClient) {}
 
-  getUsers(): Observable<User[]> {
+  getUsers(): Observable<User[]> {   
+    let count = localStorage.getItem('CountPage')
+    console.log(count)
+    let params = new HttpParams().set("page", count)
     return this.http.get<User[]>(
-      "https://gorest.co.in/public-api/users?access-token=zDaFK1F-OqoW1APJVJR3VS-BgG9Xlx_mAvkZ"
+      `${environment.restURL}/users?access-token=${environment.apiKey}`,
+      { params }
+    );
+  }
+
+  createUser(user: User): Observable<User> {
+    return this.http
+      .post(
+        `${environment.restURL}/users?access-token=${environment.apiKey}`,
+        user
+      )
+      .pipe(
+        map((response: FbCreateResponse) => {
+          return {
+            ...user,
+            id: response.name
+          };
+        })
+      );
+  }
+  updateUser(user:User):Observable<User>{
+    return this.http.patch<User>(`${environment.restURL}/users/${user.id}?access-token=${environment.apiKey}`,user)
+  }
+  getById(id:string):Observable<User>{
+    return this.http.get<User>(`${environment.restURL}/users/${id}?access-token=${environment.apiKey}`).pipe(
+      map((user: User) => {
+        return {
+        ...user,
+          id,
+        };
+      })
     );
   }
 }

@@ -1,5 +1,5 @@
-<tr *ngFor="let user of users | valueArray">
-   <td>{{user.id }}</td>
-   <td>{{user.first_name }}</td>
-</tr>
-
+<ul *ngFor="let user of users | valueArray |  paginate: { itemsPerPage: 7, currentPage: p }">
+  <li>{{user.id }}</li>
+  <li>{{user.first_name }}</li>
+</ul>
+<pagination-controls (pageChange)="p = $event"></pagination-controls>

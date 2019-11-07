@@ -1,5 +1,10 @@
 export interface User {
-    name:string,
-    surname:string,
-    email:string
+  id?: string;
+  first_name: string;
+  last_name: string;
+  gender: string;
+  email: string;
+}
+export interface FbCreateResponse {
+  name: string;
 }

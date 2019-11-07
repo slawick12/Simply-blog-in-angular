@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiKey:'WbK4ZGeKHhWBkm_3N2DUpEUlyGO4XyQw2-vg',
+  apiKey:'zDaFK1F-OqoW1APJVJR3VS-BgG9Xlx_mAvkZ',
   restURL:'https://gorest.co.in/public-api'
 };
 
