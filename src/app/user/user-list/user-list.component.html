@@ -1,5 +1,6 @@
-<ul *ngFor="let user of users | valueArray |  paginate: { itemsPerPage: 7, currentPage: p }">
-  <li>{{user.id }}</li>
-  <li>{{user.first_name }}</li>
+<ul *ngFor="let user of users |  paginate: { itemsPerPage: 7, currentPage: p }">
+  <li>{{user['id'] }}</li>
+  <li>{{user['first_name'] }}</li>
+  <a class="btn btn-success" (click)="remove(user['id'])">Delete</a>
 </ul>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>

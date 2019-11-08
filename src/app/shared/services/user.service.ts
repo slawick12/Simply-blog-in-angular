@@ -51,4 +51,7 @@ export class UserService {
       })
     );
   }
+  remove(id: string): Observable<void> {
+    return this.http.delete<void>(`${environment.restURL}/users/${id}?access-token=${environment.apiKey}`)
+  }
 }

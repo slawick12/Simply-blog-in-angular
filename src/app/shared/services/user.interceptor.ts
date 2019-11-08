@@ -7,7 +7,7 @@ import {
   HttpEventType
 } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { tap, count } from "rxjs/operators";
+import { tap } from "rxjs/operators";
 
 
 @Injectable({ providedIn: "root" })

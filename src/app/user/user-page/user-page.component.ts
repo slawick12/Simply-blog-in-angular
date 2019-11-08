@@ -4,7 +4,7 @@ import { Observable, Subscription } from "rxjs";
 import { ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "src/app/shared/services/user.service";
 import { switchMap } from "rxjs/operators";
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
   selector: "app-user-page",
@@ -22,26 +22,24 @@ export class UserPageComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    console.log(this.user)
+    console.log(this.user);
     this.user = this.userService
       .getById(this.route.snapshot.params["id"])
       .subscribe(data => {
         console.log(data);
-        this.user = data["result"]
+        this.user = data["result"];
+      });
     this.form = new FormGroup({
-      first_name:new FormControl(null,Validators.required),
-      last_name:new FormControl(null,Validators.required)
-    })
+      first_name: new FormControl(null, Validators.required),
+      last_name: new FormControl(null, Validators.required)
+    });
   }
-  
-  )
-}
-  submit(){
-   this.userService
+  submit() {
+    this.userService
       .updateUser({
         ...this.user,
         first_name: this.form.value.first_name,
-        last_name: this.form.value.last_name,
+        last_name: this.form.value.last_name
       })
       .subscribe(() => {
         this.submited = false;

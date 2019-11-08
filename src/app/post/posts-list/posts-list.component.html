@@ -1,0 +1,11 @@
+<ul  *ngFor="let post of posts |  paginate: { itemsPerPage: 7, currentPage: p } ">
+    <li>post {{post['id']}}</li>
+    <li>{{post['title']}}</li>
+    <li>{{post['body']}}</li>
+    <li>{{post['user_id']}}</li>
+    <app-comments 
+    [post_id]='post.id'
+    ></app-comments>
+  </ul>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+  

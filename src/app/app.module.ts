@@ -8,10 +8,12 @@ import { UserCreateComponent } from "./user/user-create/user-create.component";
 import { AppRoutingModule } from "./app-routing.modules";
 import { UserListComponent } from "./user/user-list/user-list.component";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { ValueArrayPipePipe } from "./shared/ValueArrayPipe.pipe";
 import { HeaderInterceptor } from './shared/services/user.interceptor';
 import { UserPageComponent } from './user/user-page/user-page.component';
 import {TabsModule} from 'ngx-tabset';
+import { PostsListComponent } from './post/posts-list/posts-list.component';
+import { CommentsComponent } from './comments/comments.component';
+import { PostPageComponent } from './post/post-page/post-page.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -19,24 +21,29 @@ const INTERCEPTOR_PROVIDER: Provider = {
   useClass: HeaderInterceptor
 };
 @NgModule({
-  declarations: [
-    AppComponent,
-    UserCreateComponent,
-    UserListComponent,
-    ValueArrayPipePipe,
-    UserPageComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TabsModule.forRoot(),
-    FormsModule,
-    ReactiveFormsModule,
-    NgxPaginationModule,
-    
-  ],
-  providers: [INTERCEPTOR_PROVIDER],
-  bootstrap: [AppComponent]
+   declarations: [
+      AppComponent,
+      UserCreateComponent,
+      UserListComponent,
+      UserPageComponent,
+      PostsListComponent,
+      CommentsComponent,
+      PostPageComponent
+   ],
+   imports: [
+      BrowserModule,
+      AppRoutingModule,
+      HttpClientModule,
+      TabsModule.forRoot(),
+      FormsModule,
+      ReactiveFormsModule,
+      NgxPaginationModule
+   ],
+   providers: [
+      INTERCEPTOR_PROVIDER
+   ],
+   bootstrap: [
+      AppComponent
+   ]
 })
 export class AppModule {}

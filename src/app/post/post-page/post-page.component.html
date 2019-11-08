@@ -1,0 +1,7 @@
+<form [formGroup]="form" id="editForm" (ngSubmit)="submit()">
+    <h4>Title</h4>
+    <textarea name="title" row="6" class="form-control" [(ngModel)]="post.title" formControlName="title"></textarea>
+    <h4>Surname</h4>
+    <textarea name="body" row="6" class="form-control" [(ngModel)]="post.body" formControlName="body"></textarea>
+    <button type="submit" class="btn btn-block btn-dark" >Update</button>
+  </form>

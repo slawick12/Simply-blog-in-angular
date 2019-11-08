@@ -1,0 +1,6 @@
+<button class="btn btn-success" (click)="showTogle()">Comments</button>
+<ul *ngIf="show">
+  <li>{{comments['name']}}</li>
+  <li>{{comments['body']}}</li>
+  <li>{{comments['email']}}</li>
+</ul>

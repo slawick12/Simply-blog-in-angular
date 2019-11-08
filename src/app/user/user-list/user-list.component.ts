@@ -17,11 +17,10 @@ export class UserListComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
-    this.pSub = this.userService.getUsers().subscribe(data => {
+    this.userService.getUsers().subscribe(data => {
       let res = data["result"];
       this.users = res;
     });
@@ -30,5 +29,10 @@ export class UserListComponent implements OnInit {
     if (this.pSub) {
       this.pSub.unsubscribe();
     }
+  }
+  remove(id:string){
+    this.userService.remove(id).subscribe(() =>{
+      this.users = this.users.filter(user => user.id != id)
+    })
   }
 }
