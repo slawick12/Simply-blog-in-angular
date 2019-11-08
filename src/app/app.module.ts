@@ -14,6 +14,7 @@ import {TabsModule} from 'ngx-tabset';
 import { PostsListComponent } from './post/posts-list/posts-list.component';
 import { CommentsComponent } from './comments/comments.component';
 import { PostPageComponent } from './post/post-page/post-page.component';
+import { PostCreateComponent } from './post/post-create/post-create.component';
 
 const INTERCEPTOR_PROVIDER: Provider = {
   provide: HTTP_INTERCEPTORS,
@@ -28,7 +29,8 @@ const INTERCEPTOR_PROVIDER: Provider = {
       UserPageComponent,
       PostsListComponent,
       CommentsComponent,
-      PostPageComponent
+      PostPageComponent,
+      PostCreateComponent
    ],
    imports: [
       BrowserModule,

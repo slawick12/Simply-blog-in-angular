@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Post , Commentary} from './interfaces';
+import { Post , Commentary, FbCreateResponse} from './interfaces';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
@@ -42,5 +42,16 @@ getById(id:string):Observable<Post>{
 }
 updateUser(post:Post):Observable<Post>{
   return this.http.patch<Post>(`${environment.restURL}/posts/${post.id}?access-token=${environment.apiKey}`,post)
+}
+createPost(post: Post): Observable<Post> {
+  return this.http.post(`${environment.restURL}/posts?access-token=${environment.apiKey}`, post)
+    .pipe(
+      map((response: FbCreateResponse) => {
+        return {
+          ...post,
+          id: response.name
+        };
+      })
+    );
 }
 }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Output, Input } from "@angular/core";
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/services/interfaces";
 import { Subscription, Observable } from "rxjs";
@@ -11,9 +11,8 @@ import { HttpParams } from '@angular/common/http';
   styleUrls: ["./user-list.component.css"]
 })
 export class UserListComponent implements OnInit {
-  users: User[];
   pSub: Subscription;
-
+  @Output() users:User[]
 
   constructor(
     private userService: UserService,

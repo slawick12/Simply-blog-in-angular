@@ -1,9 +1,8 @@
-import { Component, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/services/interfaces";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+
 
 
 @Component({
@@ -13,8 +12,7 @@ import { Router } from '@angular/router';
 })
 export class UserCreateComponent implements OnInit {
   form: FormGroup;
-  href:any
-  constructor(private userService: UserService, private router: Router) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -33,8 +31,6 @@ export class UserCreateComponent implements OnInit {
     };
     this.userService.createUser(user).subscribe(() => {
       this.form.reset()
-      localStorage.setItem('user',JSON.stringify(user))
-      console.log(user)
     });
   }
 }
