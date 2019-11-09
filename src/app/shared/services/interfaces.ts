@@ -17,7 +17,7 @@ export interface Post{
 export interface Commentary{
   id?:string
   post_id:string
-  name:string
+  name?:string
   email:string
   body:string
 }

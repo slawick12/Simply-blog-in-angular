@@ -9,7 +9,7 @@ import { Commentary } from '../shared/services/interfaces';
 })
 export class CommentsComponent implements OnInit {
 comments:Commentary[]
-@Input() post_id:string
+@Input() post_id: string
 show :boolean= false
   constructor(private postService: PostService) { }
 
@@ -17,10 +17,7 @@ show :boolean= false
     this.postService.getCommentsByIdPost(this.post_id).subscribe(data=>{
       let res = data["result"]
       this.comments = res
-    
-      console.log(this.comments)
       })
-    console.log(this.post_id)
   }
   showTogle(){
     this.show = !this.show

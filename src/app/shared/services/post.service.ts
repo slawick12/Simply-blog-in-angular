@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Post , Commentary, FbCreateResponse} from './interfaces';
+import { Post , FbCreateResponse, Commentary} from './interfaces';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
@@ -26,9 +26,9 @@ getComments():Observable<Comment[]>{
   return this.http.get<Comment[]>(
     `${environment.restURL}/comments?access-token=${environment.apiKey}`)
 }
-getCommentsByIdPost(id:string):Observable<Comment[]>{
-let params = new HttpParams().set("id", id)
-return this.http.get<Comment[]>(`${environment.restURL}/comments/${id}?access-token=${environment.apiKey}`)
+getCommentsByIdPost(id:string):Observable<Commentary[]>{
+//let params = new HttpParams().set("id", id)
+return this.http.get<Commentary[]>(`${environment.restURL}/comments/${id}?access-token=${environment.apiKey}`)
 }
 getById(id:string):Observable<Post>{
   return this.http.get<Post>(`${environment.restURL}/posts/${id}?access-token=${environment.apiKey}`).pipe(
@@ -49,6 +49,18 @@ createPost(post: Post): Observable<Post> {
       map((response: FbCreateResponse) => {
         return {
           ...post,
+          id: response.name
+        };
+      })
+    );
+}
+createComment(commetnt: Commentary): Observable<Commentary> {
+  console.log(commetnt)
+  return this.http.post(`${environment.restURL}/comments?access-token=${environment.apiKey}`, commetnt)
+    .pipe(
+      map((response: FbCreateResponse) => {
+        return {
+          ...commetnt,
           id: response.name
         };
       })
