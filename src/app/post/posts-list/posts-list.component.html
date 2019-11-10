@@ -1,11 +1,37 @@
-<ul  *ngFor="let post of posts |  paginate: { itemsPerPage: 7, currentPage: p } ">
-    <li>post {{post['id']}}</li>
-    <li>{{post['title']}}</li>
-    <li>{{post['body']}}</li>
-    <li>{{post['user_id']}}</li>
-    <app-comments 
-    [post_id]='post.id'
-    ></app-comments>
-  </ul>
-  <pagination-controls (pageChange)="p = $event"></pagination-controls>
-  
+<div class="container" *ngIf="posts; else loading">
+    <div class="row">
+      <div class="col" >
+        <div class="post-wrapper" *ngFor="let post of posts |  paginate: { itemsPerPage: 7, currentPage: p } ">
+          <header class="post-thumbnail">
+            <div class="post-main-info" >
+              <img src="https://www.dropbox.com/s/02f3cfyd8rlqnck/man.jpg?raw=1" alt="" class="post-author-img" />
+              <h3 class="post-title"> {{post['title']}}</h3>
+              <ul class="post-info">
+                <li class="info-item"><i class="icon ion-android-person"></i></li>
+              </ul>
+            </div>
+          </header>
+          <div class="post-content">
+            <p>{{post['body']}}</p>
+            <a [routerLink]="['/post-list',post['id']]" routerLinkActive="router-link-active"  class="btn-more">Open</a>
+            <a [routerLink]="['/post-list/update',post['id']]" routerLinkActive="router-link-active"  class="btn-more mr-2">Update</a>
+            <app-comments [post_id]='post.id'></app-comments>
+          </div>
+          <footer class="post-footer">
+            <ul class="post-footer-info">
+              <li class="footer-info-item"><i class="ion-ios-pricetags-outline"></i>post number {{post['id']}}</li>
+            </ul>
+          </footer>
+        </div>
+      </div>
+    </div>
+    <pagination-controls (pageChange)="p = $event" ></pagination-controls>
+  </div>
+
+<ng-template #loading>
+    <div class="d-flex justify-content-center">
+      <div class="spinner-border text-success" style="width: 5rem; height: 3rem; top: 40%" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+  </ng-template>

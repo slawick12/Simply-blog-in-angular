@@ -1,6 +1,63 @@
-<ul *ngFor="let user of users |  paginate: { itemsPerPage: 7, currentPage: p }">
-  <li>{{user['id'] }}</li>
-  <li>{{user['first_name'] }}</li>
-  <a class="btn btn-success" (click)="remove(user['id'])">Delete</a>
-</ul>
-<pagination-controls (pageChange)="p = $event"></pagination-controls>
+<section *ngIf="users; else loading">
+  <div class="container">
+    <div class="userlist">
+      <div class="container" *ngFor="let user of users |  paginate: { itemsPerPage: 7, currentPage: p }">
+        <div class="row user">
+          <div class=" col-lg-3 col-md-4 mb-2">
+            <div class="block1">
+              <div class="card-img-wrapper">
+                <img src="{{user._links.avatar.href}}" alt="{{user.first_name}}" class="zoom">
+                <ul class="list-inline member-icons animate text-center mt-2">
+                  <li class="list-inline-item"><button class="btn btn-info" [routerLink]="['/user-list/', user.id]"
+                      [queryParams]="{tab: 3}">Open<i class="fa fa-user"></i></button></li>
+                  <li class="list-inline-item"><button class="btn btn-danger" (click)="remove(user['id'])"> <i
+                        class="fa fa-envelope"></i>Delete</button></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-9 col-md-8 descr">
+            <div class="row">
+              <div class="col-lg-3 col-sm-7 name">
+                <a [routerLink]="['/user-list/', user.id]">
+                  <h5>{{user['first_name']}} {{user['last_name']}}</h5>
+                </a>
+              </div>
+              <div class="offset col-lg-7 col-sm-1">
+              </div>
+              <div class="col-lg-2 col-sm-4">
+                <span class="d-flex">
+                  <i class="fa fa-map-marker fa-lg pr-2" aria-hidden="true"></i>
+                  <p><span class="location"> {{user['address']}} </span></p>
+                </span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="d-flex col-lg-5">
+                <i class="fa fa-graduation-cap icons2" aria-hidden="true"></i>
+                <p>Email: <span class="languages">{{user['email']}}</span></p>
+              </div>
+              <div class="offset col-lg-1"> </div>
+              <div class="d-flex col-lg-6">
+                <i class="fa fa-leanpub icons2"></i>
+                <p>Gender: <span class="languages">{{user['gender']}}</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class='col-xs-6 col-md-6 col-xs-6 mt-5 pg-blue justify-content-center'>
+          <pagination-controls (pageChange)="p = $event"></pagination-controls>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<ng-template #loading>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-success" style="width: 3rem; height: 4rem;" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</ng-template>

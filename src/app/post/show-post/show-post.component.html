@@ -1,42 +1,88 @@
-<ul>
-  <li>post {{post['id']}}</li>
-  <li>{{post['title']}}</li>
-  <li>{{post['body']}}</li>
-  <li>{{comments['name']}}</li>
-  <li>{{comments['body']}}</li>
-</ul>
-<div *ngIf="form; else loading">
-  <form [formGroup]="form" (ngSubmit)="submit()">
+<div class="container" *ngIf="post; else loading">
+  <div class="row">
+    <div class="col">
+      <div class="post-wrapper">
+        <header class="post-thumbnail">
+          <div class="post-main-info">
+            <img src="https://www.dropbox.com/s/02f3cfyd8rlqnck/man.jpg?raw=1" alt="" class="post-author-img" />
+            <h3 class="post-title"> {{post['title']}}</h3>
+            <ul class="post-info">
+              <li class="info-item"><i class="icon ion-android-person"></i></li>
+            </ul>
+          </div>
+        </header>
+        <div class="post-content">
+          <p>{{post['body']}}</p>
+          <div class="comments-container">
+            <ul id="comments-list" class="comments-list">
+              <li>
+                <div class="comment-main-level">
+                  <div class="comment-box">
+                    <div class="comment-head">
+                      <div class="comment-name by-author">{{post['id']}}</div>
+                      <span>{{comments['email']}}</span>
+                      <i class="fa fa-reply"></i>
+                      <i class="fa fa-heart"></i>
+                    </div>
+                    <div class="comment-content">
+                      {{comments["body"]}}
+                    </div>
+                  </div>
+                </div>
+              </li>
+              <li>
+                <div class="comment-main-level">
+                  <div class="comment-box pl-4">
+                    <form [formGroup]="form" (ngSubmit)="submit()">
+                      <div class="comment-head">
+                          <h4>Write comment</h4>
+                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
+                          <label for="title">Post id</label>
+                          <input type="text" value="post_id" formControlName="post_id">
+                        </div>
+                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
+                          <label for="title">Email: </label>
+                          <select formControlName="email">
+                            <option *ngFor="let user of users; let i=index" [value]="user['email']">
+                              {{user["email"]}}
+                            </option>
+                          </select>
+                        </div>
+                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
+                          <label for="title">Name and Surname: </label>
+                          <select formControlName="first_name" formControlName="last_name">
+                            <option *ngFor="let user of users; let i=index" [value]="user['first_name']">
+                              {{user["id"]}}
+                              {{user['first_name']}}
+                              {{user['last_name']}}
+                            </option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="comment-content ">
+                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
+                          <label for="title">Body: </label>
+                          <input type="text" id="body" formControlName="body">
+                        </div>
+                      </div>
+                      <button class="btn-more" type="submit">Create comments</button>
+                    </form>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <div class="form-control">
-      <label for="title">Post id</label>
-      <input type="text" value="post_id" formControlName="post_id">{{post.id}}
-    </div>
-    <div class="form-control">
-      <label for="title">Body</label>
-      <input type="text" id="body" formControlName="body">
-    </div>
-    <div class="form-control">
-      <label for="title">email</label>
-      <select formControlName="email">
-        <option *ngFor="let user of users; let i=index" [value]="user['email']">
-          {{user["email"]}}
-        </option>
-      </select>
-    </div>
-    <div class="form-control">
-      <label for="title">Name and Surname</label>
-      <select formControlName="name">
-        <option *ngFor="let user of users; let i=index" [value]="user['first_name']">
-          {{user["id"]}}
-          {{user['first_name']}}
-          {{user['last_name']}}
-        </option>
-      </select>
-    </div>
-    <button class="btn btn-primary" type="submit">create post</button>
-  </form>
 </div>
+
 <ng-template #loading>
-  <p class="text-center">Loading...</p>
+  <div class="d-flex justify-content-center">
+    <div class="spinner-border text-success" style="width: 5rem; height: 3rem; top: 40%" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
 </ng-template>

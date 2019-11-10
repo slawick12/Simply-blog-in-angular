@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/services/interfaces";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { ActivatedRoute } from '@angular/router';
 
 
 
@@ -12,12 +13,14 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class UserCreateComponent implements OnInit {
   form: FormGroup;
-  constructor(private userService: UserService) {}
+  constructor(private userService: UserService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.form = new FormGroup({
       first_name: new FormControl(null, Validators.required),
       last_name: new FormControl(null, Validators.required),
+      address: new FormControl(null, Validators.required),
+      phone: new FormControl(null, Validators.required),
       gender: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email])
     });
@@ -27,7 +30,9 @@ export class UserCreateComponent implements OnInit {
       first_name: this.form.value.first_name,
       last_name: this.form.value.last_name,
       gender: this.form.value.gender,
-      email: this.form.value.email
+      email: this.form.value.email,
+      phone:this.form.value.phone,
+      address:this.form.value.address
     };
     this.userService.createUser(user).subscribe(() => {
       this.form.reset()

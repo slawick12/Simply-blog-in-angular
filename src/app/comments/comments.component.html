@@ -1,6 +1,20 @@
-<button class="btn btn-success" (click)="showTogle()">Comments</button>
-<ul *ngIf="show">
-  <li>{{comments['name']}}</li>
-  <li>{{comments['body']}}</li>
-  <li>{{comments['email']}}</li>
-</ul>
+<button class="btn" (click)="showTogle()">Comments</button>
+<div class="comments-container" *ngIf="show">
+  <ul id="comments-list" class="comments-list">
+    <li>
+      <div class="comment-main-level">
+        <div class="comment-box">
+          <div class="comment-head">
+            <h6 class="comment-name by-author">{{comments['name']}}</h6>
+            <span>{{comments['email']}}</span>
+            <i class="fa fa-reply"></i>
+            <i class="fa fa-heart"></i>
+          </div>
+          <div class="comment-content">
+            {{comments["body"]}}
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

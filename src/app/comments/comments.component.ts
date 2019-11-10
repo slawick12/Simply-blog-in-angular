@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { PostService } from 'src/app/shared/services/post.service';
-import { Commentary } from '../shared/services/interfaces';
+import { Commentary, User } from '../shared/services/interfaces';
+import { UserService } from '../shared/services/user.service';
 
 @Component({
   selector: 'app-comments',
@@ -11,7 +12,7 @@ export class CommentsComponent implements OnInit {
 comments:Commentary[]
 @Input() post_id: string
 show :boolean= false
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService,private userService: UserService) { }
 
   ngOnInit() {
     this.postService.getCommentsByIdPost(this.post_id).subscribe(data=>{

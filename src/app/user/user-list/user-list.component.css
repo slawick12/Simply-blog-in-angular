@@ -1,0 +1,214 @@
+section {
+  margin-top: 30px;
+  margin-bottom: 60px;
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.userlist {
+  background-color: white;
+  padding-top: 20px;
+  -webkit-box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+  -moz-box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+  box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+
+}
+
+#geo {
+  width: auto;
+  height: 30px;
+  padding-top: 3px;
+  padding-right: 5px;
+  padding-left: 15px;
+}
+
+
+input {
+  border-radius: 7px;
+  height: 35px;
+}
+
+.icons {
+  padding-right: 5px;
+  padding-top: 10px;
+}
+
+.input_name {
+  font-size: 18px;
+  padding-right: 10px;
+  padding-top: 4px;
+}
+
+.second_row {
+  padding-top: 5px;
+}
+
+.block1:hover img {
+  transform: scale(1.2, 1.2);
+  transition-duration: 500ms;
+  border-radius: 12px;
+  transition-timing-function: ease-out;
+  opacity: 0.7;
+}
+
+.block1 img {
+  transform: scale(1.0, 1.0);
+  transition-duration: 500ms;
+  transition-timing-function: ease-out;
+}
+
+.card-img-wrapper {
+  overflow: hidden;
+  position: relative;
+  z-index: 2;
+}
+
+.member-icons {
+  position: absolute;
+  bottom: -30%;
+  left: 0;
+  right: 0;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0;
+}
+
+.card-img-wrapper:hover .member-icons {
+  bottom: 0;
+  opacity: 1;
+}
+
+.animate {
+  transition: all 0.3s ease-in-out;
+}
+
+.user {
+  padding-left: 20px;
+  padding-top: 30px;
+}
+
+.icons3 {
+  padding-top: 3px;
+  margin-right: -20px;
+  cursor: pointer;
+}
+
+.icons2 {
+  padding-right: 5px;
+  padding-top: 3px;
+}
+
+.opinions {
+  padding-top: 10px;
+}
+
+.location {
+  color: #2a5885;
+}
+
+#geo_s {
+  width: auto;
+  height: 20px;
+  padding-right: 5px;
+  padding-left: 15px;
+}
+
+a {
+  color: #1a52ad !important;
+}
+
+.about p {
+  font-size: 14px;
+}
+
+.user {
+  border-bottom-style: outset;
+  border-bottom-width: thin;
+}
+
+.map-icon {
+  padding-top: 6px;
+}
+
+@media screen and (max-width: 1200px) {}
+
+@media screen and (max-width: 992px) {
+  .descr {
+    padding-left: 60px;
+    position: relative;
+  }
+
+  input {
+    max-width: 210px;
+  }
+
+  .filters2 {
+    display: flex;
+  }
+
+}
+
+@media screen and (max-width: 768px) {
+  .first_row {
+    display: block !important;
+  }
+
+  .map-icon {
+    padding-top: 6px;
+  }
+
+  .countries-sel {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  .block1 {
+    display: flex;
+  }
+
+  .icons3 {
+    margin-right: 8px;
+    margin-left: 20px;
+    margin-top: 7px;
+    font-size: 40px;
+  }
+
+  .opinions {
+    margin-left: 150px;
+  }
+
+  .opinions p {
+    font-size: 40px;
+  }
+
+  .descr {
+    margin-top: 20px;
+  }
+}
+
+@media screen and (max-width: 580px) {
+  input {
+    margin-right: 10px;
+  }
+
+  .block1 {
+    display: flex;
+  }
+
+  .icons3 {
+    font-size: 30px;
+    margin-right: 2px;
+    margin-left: 10px;
+    margin-top: 9px;
+  }
+
+  .opinions {
+    margin-left: 10px;
+    margin-top: -17px;
+  }
+
+  .opinions p {
+    font-size: 30px;
+  }
+
+}

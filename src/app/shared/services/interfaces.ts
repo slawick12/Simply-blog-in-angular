@@ -2,7 +2,9 @@ export interface User {
   id?: string;
   first_name: string;
   last_name: string;
+  address:string;
   gender: string;
+  phone:string
   email: string;
 }
 export interface FbCreateResponse {

@@ -1,64 +1,77 @@
-<form [formGroup]="form" id="editForm" (ngSubmit)="submit()">
-    <h4>Name</h4>
-    <textarea name="name" row="6" class="form-control" [(ngModel)]="user.first_name" formControlName="first_name"></textarea>
-    <h4>Surname</h4>
-    <textarea name="surname" row="6" class="form-control" [(ngModel)]="user.last_name" formControlName="last_name"></textarea>
-    <button type="submit" class="btn btn-block btn-dark" >Update</button>
-  </form>
-<!-- <div class="container mt-4">
-    <div class="row">
-      <div class="col-sm-4">
-        <h1>Your Profile</h1>
-      </div>
-      <div class="col-sm-8"> -->
-        <!-- <div *ngIf="editForm.dirty" class="alert alert-info">
-          <strong>Information: </strong>You have made changes. Any unsaved changes
-          will be lost
-        </div> -->
-      <!-- </div>
-    </div>
-    <div class="row">
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <div>
-              <div>
-                <strong>Name and Surname: </strong>
-                <p>{{ user.first_name }}, {{ user.last_name }}</p>
-            <div>
-              <strong>Email: </strong>
-              <p>{{ user.email }}</p>
-            </div>
-            <div>
-                <strong>Gender: </strong>
-                <p>{{ user.gender }}</p>
-              </div>
-          </div>
-          <div class="card-footer">
-            <button [disabled]="!editForm.dirty" form="editForm" class="btn btn-success btn-block">
-              Save changes
-            </button>
+<div class="wrapper">
+  <div class="container mt-4">
+    <div class="userlist pr-2 pl-2">
+      <div class="row">
+        <div class="col-md-6 col-sm-8">
+          <h1>Your Profile <span>{{user.first_name}}</span></h1>
+        </div>
+        <div class="col-sm-8 mt-4">
+          <div *ngIf="form.dirty" class="alert alert-info">
+            <strong>Information: </strong>You have made changes. Any unsaved changes
+            will be lost
           </div>
         </div>
       </div>
-      <div class="col-sm-8">
-        <div class="tab-panel"> -->
-          <!-- <tabset class="member-tabset">
-            <tab heading="Edit Profile"> -->
-              <!-- <form [formGroup]="form"  >
-                <h4>Name</h4>
-                <textarea name="name" row="6" class="form-control" [(ngModel)]="user.name" formControlName='first_name'></textarea>
-                <h4>Surname</h4>
-                <textarea name="surname" row="6" class="form-control" [(ngModel)]="user.last_name" formControlName='last_name'></textarea>
-                <h4>Gender</h4>
-                <textarea name="city" row="6" class="form-control" [(ngModel)]="user.gemder" formControlName='gender'></textarea>
-                <h4>Emaile</h4>
-                <textarea name="country" row="6" class="form-control" [(ngModel)]="user.email" formControlName='email'></textarea>
-              </form> -->
-           <!--</tab>
-          </tabset> -->
-        <!-- </div>
+      <div class="row">
+        <div class="col-sm-5 mb-5">
+          <div class="card">
+            <div class="card-body">
+              <div>
+                <div>
+                  <div>
+                    <img src="{{user._links.avatar.href}}" alt="mainphoto" class="card-img-top img-thumbnail">
+                  </div>
+                  <strong>Name i Surname: </strong>
+                  <p>{{ user.first_name }}, {{ user.last_name }}</p>
+                </div>
+                <strong>Location: </strong>
+                <p>{{ user.address }}</p>
+              </div>
+              <div>
+                <strong>Email: </strong>
+                <p>{{ user.email }}</p>
+              </div>
+              <div>
+                <strong>Gender: </strong>
+                <p>{{ user.gender }}</p>
+              </div>
+              <div>
+                <strong>Phone: </strong>
+                <p>{{ user.phone }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-7 mb-5">
+          <div class="tab-panel">
+            <form [formGroup]="form" (ngSubmit)="submit()" id="editForm">
+              <h4>Name</h4>
+              <textarea name="first_name" row="6" class="form-control" id="first_name" formControlName="first_name"
+                [(ngModel)]="user.first_name"></textarea>
+              <h4>Surname</h4>
+              <textarea name="surname" row="6" class="form-control" formControlName="last_name"
+                [(ngModel)]="user.last_name"></textarea>
+              <h4>Gender</h4>
+              <textarea name="city" row="4" class="form-control" formControlName="gender" [(ngModel)]="user.gender"
+                placeholder="Male or Famale"></textarea>
+              <h4>Address</h4>
+              <textarea name="country" row="6" class="form-control" formControlName="address"
+                [(ngModel)]="user.address"></textarea>
+              <h4>Email</h4>
+              <textarea name="country" row="6" class="form-control" formControlName="email" [(ngModel)]="user.email"
+                placeholder="email@email.com"></textarea>
+              <h4>Phone</h4>
+              <textarea name="country" row="6" class="form-control" formControlName="phone"
+                [(ngModel)]="user.phone"></textarea>
+              <div class="card-footer">
+                <button [disabled]="!form.dirty" class="btn  btn-success btn-block" type="submit">
+                  Save changes
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
-  </div> -->
-  
+  </div>
+</div>

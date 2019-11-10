@@ -1,6 +1,5 @@
-import { Component, OnInit } from "@angular/core";
-import { User } from "src/app/shared/services/interfaces";
-import { Observable, Subscription } from "rxjs";
+import { Component, OnInit, ViewChild } from "@angular/core";
+import {  Subscription } from "rxjs";
 import { ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "src/app/shared/services/user.service";
 import { switchMap } from "rxjs/operators";
@@ -31,7 +30,11 @@ export class UserPageComponent implements OnInit {
       });
     this.form = new FormGroup({
       first_name: new FormControl(null, Validators.required),
-      last_name: new FormControl(null, Validators.required)
+      last_name: new FormControl(null, Validators.required),
+      gender: new FormControl(null, Validators.required),
+      address: new FormControl(null, Validators.required),
+      email: new FormControl(null, [Validators.required, Validators.email]),
+      phone: new FormControl(null, Validators.required),
     });
   }
   submit() {
@@ -39,7 +42,11 @@ export class UserPageComponent implements OnInit {
       .updateUser({
         ...this.user,
         first_name: this.form.value.first_name,
-        last_name: this.form.value.last_name
+        last_name: this.form.value.last_name,
+        gender: this.form.value.gender,
+        email: this.form.value.email,
+        phone:this.form.value.phone,
+        address:this.form.value.address
       })
       .subscribe(() => {
         this.submited = false;

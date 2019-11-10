@@ -1,25 +1,62 @@
-<div *ngIf="form; else loading">
-  <form [formGroup]="form" (ngSubmit)="submit()">
-
-    <div class="form-control" >
-      <label for="title">name</label>
-      <input type="text" id="first_name" formControlName="first_name">
+<div class="main d-flex align-items-center">
+    <div class="container">
+      <div class="row d-flex ">
+        <div class="col-xs-8 col-sm-9 col-lg-6 signup-container pl-4 pr-4 my-4">
+          <h2 class="text-center text-primary mt-4">Create User</h2>
+          <form [formGroup]="form" (ngSubmit)="submit()">
+            <!-- name -->
+            <div class="form-group">
+              <div class="input-group group-with-icon">
+                <input required type="text" class="form-control form-control-md inputCustom" id="nameInput"
+                  placeholder="Enter your name" name="name" formControlName="first_name">
+                  <label for="nameInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+              </div>
+            </div>
+            <!-- surname -->
+            <div class="form-group">
+              <div class="input-group group-with-icon">
+                  <i class="fa fa-users icon"></i>
+                <input required type="text" class="form-control form-control-md inputCustom" id="surnameInput"
+                  placeholder="Enter your surname" name="surname" formControlName="last_name">
+              </div>
+            </div>
+            <!-- gender -->
+            <div class="form-group">
+              <div class="input-group group-with-icon">
+                  <i class="fa fa-building icon"></i>
+                <input required type="text" class="form-control form-control-md inputCustom" id="gender"
+                  placeholder="Male of famale" name="gender" formControlName="gender">
+              </div>
+            </div>
+            <!-- email -->
+            <div class="form-group">
+                <div class="input-group group-with-icon">
+                    <i class="fa fa-envelope-open icon"></i>
+                  <input required type="text" class="form-control form-control-md inputCustom" id="email"
+                    placeholder="Enter your email" name="email" formControlName="email">
+                </div>
+              </div>
+            <!-- address -->
+            <div class="form-group">
+              <div class="input-group group-with-icon">
+                  <i class="fa fa-flag icon"></i>
+                <input required type="text" class="form-control form-control-md inputCustom" id="address"
+                  placeholder="Enter your address" name="address" formControlName="address">
+              </div>
+            </div>
+            <!-- phone -->
+            <div class="form-group">
+                <div class="input-group group-with-icon">
+                    <i class="fa fa-envelope-open icon"></i>
+                  <input required type="text" class="form-control form-control-md inputCustom" id="emailInput"
+                    placeholder="Enter your phone" name="phone" formControlName="phone">
+                </div>
+              </div>
+            </form> 
+            <div class="form-group text-center">
+              <button [disabled]="form.invalid" class="btn btn-success button-custom-style font-weight-bold mt-3 mr-3" (click)="submit()">Create</button>
+            </div>
+        </div>
+      </div>
     </div>
-    <div class="form-control" >
-      <label for="title">surname</label>
-      <input type="text" id="last_name" formControlName="last_name">
-    </div>
-    <div class="form-control" >
-      <label for="title">gender</label>
-      <input type="text" id="gender" formControlName="gender">
-    </div>
-    <div class="form-control">
-      <label for="title">email</label>
-      <input type="text" id="email" formControlName="email">
-    </div>
-    <button class="btn btn-primary" type="submit">Update</button>
-  </form>
-</div>
-<ng-template #loading>
-  <p class="text-center">Loading...</p>
-</ng-template>
+  </div>

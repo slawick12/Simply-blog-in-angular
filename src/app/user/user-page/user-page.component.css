@@ -1,0 +1,54 @@
+.wrapper {
+  overflow-x: hidden !important;
+  overflow-y: hidden !important;
+}
+
+.userlist {
+  border: 4px;
+  border-color: rgb(14, 8, 2);
+  background-color: white;
+  padding-top: 20px;
+  -webkit-box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+  -moz-box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+  box-shadow: -5px 3px 7px -1px rgba(115, 113, 115, 0.63);
+}
+
+.img-thumbnail {
+  align-content: center;
+  margin: 15px;
+  width: 85%;
+
+}
+
+.member-tabset h1,
+.member-tabset textarea {
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 0 25px;
+}
+
+.card-footer {
+  padding: 10px 15px;
+  background-color: #fff;
+  border-top: none;
+}
+
+@media screen and (max-width: 992px) {
+  .img-thumbnail {
+    margin: 17px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .img-thumbnail {
+    margin: 12px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .img-thumbnail {
+    margin: 21px;
+  }
+}

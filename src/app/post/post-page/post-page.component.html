@@ -1,7 +1,32 @@
-<form [formGroup]="form" id="editForm" (ngSubmit)="submit()">
-    <h4>Title</h4>
-    <textarea name="title" row="6" class="form-control" [(ngModel)]="post.title" formControlName="title"></textarea>
-    <h4>Surname</h4>
-    <textarea name="body" row="6" class="form-control" [(ngModel)]="post.body" formControlName="body"></textarea>
-    <button type="submit" class="btn btn-block btn-dark" >Update</button>
-  </form>
+<div class="main">
+  <div class="container">
+    <div class="row justify-content-center main_block">
+      <div class="col-xs-8 col-sm-10 center-container pl-4 pr-4 ">
+        <div class="text-center mt-3 login">
+          <h1>Update post {{post['id']}}</h1>
+        </div>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <div class="form-group">
+            <label class="col-form-label-lg" for="exampleInput">Title</label>
+            <div class="input-group group-with-icon">
+              <textarea type="text" class="form-control form-control-lg inputCustom"  [(ngModel)]="post.title" formControlName="title"id="exampleInput"
+                aria-describedby="emailHelp" placeholder="Enter email" name="email"></textarea>
+              <label for="exampleInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="col-form-label-lg" for="exampleInput">Body</label>
+            <div class="input-group group-with-icon">
+              <textarea type="text" class="form-control form-control-lg inputCustom"[(ngModel)]="post.body" formControlName="body" id="exampleInput"
+                aria-describedby="emailHelp" placeholder="Enter email" name="email" ></textarea>
+              <label for="exampleInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+            </div>
+          </div>
+          <div class="form-group text-center">
+            <button type="submit" class="btn btn-success button-custom-style font-weight-bold">Update</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
