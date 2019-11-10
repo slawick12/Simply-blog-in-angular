@@ -16,7 +16,6 @@ export class PostCreateComponent implements OnInit {
   constructor(private postService: PostService, private userService: UserService ) {
     of(this.userService.getUsers().subscribe(data=>{
       this.users = data['result'];
-     console.log(data)
     }))
   }
   ngOnInit() {
@@ -31,12 +30,10 @@ export class PostCreateComponent implements OnInit {
     const post: Post = {
       user_id: this.form.value.user_id,
       title: this.form.value.title,
-      body: this.form.value.body,
-
+      body: this.form.value.body
     };
     this.postService.createPost(post).subscribe(() => {
       this.form.reset()
-      console.log(post)
     });
   }
 

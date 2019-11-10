@@ -33,7 +33,7 @@ export class PostPageComponent implements OnInit {
   }
   submit() {
     this.postService
-      .createPost({
+      .updatePost({
         ...this.post,
         title: this.form.value.title,
         body: this.form.value.body

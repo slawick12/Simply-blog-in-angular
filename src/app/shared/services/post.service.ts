@@ -43,7 +43,7 @@ export class PostService {
         })
       );
   }
-  updateUser(post: Post): Observable<Post> {
+  updatePost(post: Post): Observable<Post> {
     return this.http.patch<Post>(
       `${environment.restURL}/posts/${post.id}?access-token=${environment.apiKey}`,
       post

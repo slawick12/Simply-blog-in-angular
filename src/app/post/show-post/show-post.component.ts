@@ -24,7 +24,6 @@ export class ShowPostComponent implements OnInit {
     of(
       this.userService.getUsers().subscribe(data => {
         this.users = data["result"];
-        console.log(data);
       })
     );
   }
@@ -33,7 +32,6 @@ export class ShowPostComponent implements OnInit {
     this.post = this.postService
       .getById(this.route.snapshot.params["id"])
       .subscribe(data => {
-        console.log(data);
         this.post = data["result"];
       });
     this.post = this.postService
@@ -53,7 +51,6 @@ export class ShowPostComponent implements OnInit {
   submit() {
     const comment: Commentary = {
       post_id: this.form.value.post_id,
-      name: this.form.value.name,
       body: this.form.value.body,
       email: this.form.value.email
     };
