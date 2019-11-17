@@ -9,7 +9,7 @@ import { PostCreateComponent } from "./post/post-create/post-create.component";
 import { ShowPostComponent } from "./post/show-post/show-post.component";
 
 const routes: Routes = [
-  { path: "",redirectTo:'xpost-list', pathMatch: "full" },
+  { path: "",redirectTo:'post-list', pathMatch: "full" },
   { path: "user-create", component: UserCreateComponent },
   { path: "user-list", component: UserListComponent },
   { path: "user-list/:id", component: UserPageComponent },

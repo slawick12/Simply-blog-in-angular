@@ -9,9 +9,9 @@
                 <img src="{{user._links.avatar.href}}" alt="{{user.first_name}}" class="zoom">
                 <ul class="list-inline member-icons animate text-center mt-2">
                   <li class="list-inline-item"><button class="btn btn-info" [routerLink]="['/user-list/', user.id]"
-                      [queryParams]="{tab: 3}">Open<i class="fa fa-user"></i></button></li>
+                      [queryParams]="{tab: 3}"> <i class="fa fa-user"> Open </i></button></li>
                   <li class="list-inline-item"><button class="btn btn-danger" (click)="remove(user['id'])"> <i
-                        class="fa fa-envelope"></i>Delete</button></li>
+                        class="fa fa-envelope"> Delete </i></button></li>
                 </ul>
               </div>
             </div>
@@ -34,12 +34,12 @@
             </div>
             <div class="row">
               <div class="d-flex col-lg-5">
-                <i class="fa fa-graduation-cap icons2" aria-hidden="true"></i>
+                <i class="fa fa-envelope-open icons2" aria-hidden="true"></i>
                 <p>Email: <span class="languages">{{user['email']}}</span></p>
               </div>
               <div class="offset col-lg-1"> </div>
               <div class="d-flex col-lg-6">
-                <i class="fa fa-leanpub icons2"></i>
+                <i class="fa fa-venus-mars icons2"></i>
                 <p>Gender: <span class="languages">{{user['gender']}}</span></p>
               </div>
             </div>

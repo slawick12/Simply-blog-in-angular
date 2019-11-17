@@ -1,4 +1,4 @@
-<div class="container" *ngIf="post; else loading">
+<div class="container" *ngIf="form; else loading">
   <div class="row">
     <div class="col">
       <div class="post-wrapper">
@@ -19,7 +19,7 @@
                 <div class="comment-main-level">
                   <div class="comment-box">
                     <div class="comment-head">
-                      <div class="comment-name by-author">{{post['id']}}</div>
+                      <div class="comment-name by-author">Comment to post number {{post['id']}}</div>
                       <span>{{comments['email']}}</span>
                       <i class="fa fa-reply"></i>
                       <i class="fa fa-heart"></i>
@@ -32,26 +32,22 @@
               </li>
               <li>
                 <div class="comment-main-level">
-                  <div class="comment-box pl-4">
-                    <form [formGroup]="form" (ngSubmit)="submit()">
+                  <div class="comment-box">
+                    <form [formGroup]="form" (ngSubmit)="submit()" >
                       <div class="comment-head">
                           <h4>Write comment</h4>
                         <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
-                          <label for="title">Post id</label>
-                          <input type="text" value="post_id" formControlName="post_id">
-                        </div>
-                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
-                          <label for="title">Email: </label>
+                          <label class="title">Email: </label>
                           <select formControlName="email">
-                            <option *ngFor="let user of users; let i=index" [value]="user['email']">
-                              {{user["email"]}}
+                            <option *ngFor="let user of users" [value]="user['email']">
+                                {{user["email"]}}
                             </option>
                           </select>
                         </div>
                         <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
-                          <label for="title">Name and Surname: </label>
-                          <select formControlName="first_name" formControlName="last_name">
-                            <option *ngFor="let user of users; let i=index" [value]="user['first_name']">
+                          <label class="title">Name: </label>
+                          <select  formControlName="name">
+                            <option *ngFor="let user of users" [value]="user['first_name']">
                               {{user["id"]}}
                               {{user['first_name']}}
                               {{user['last_name']}}
@@ -60,9 +56,9 @@
                         </div>
                       </div>
                       <div class="comment-content ">
-                        <div class="form-control mt-2 mb-2 border-right-0 border-top-0">
-                          <label for="title">Body: </label>
-                          <input type="text" id="body" formControlName="body">
+                        <div class="form-control mb-2 border-right-5 border-top-5 ">
+                          <label class="title">Body: </label>
+                          <textarea type="text" class="body" formControlName="body"></textarea>
                         </div>
                       </div>
                       <button class="btn-more" type="submit">Create comments</button>

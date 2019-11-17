@@ -6,7 +6,7 @@
           <h1>Your Profile <span>{{user.first_name}}</span></h1>
         </div>
         <div class="col-sm-8 mt-4">
-          <div *ngIf="form.dirty" class="alert alert-info">
+          <div *ngIf="form.dirty && !submited" class="alert alert-info">
             <strong>Information: </strong>You have made changes. Any unsaved changes
             will be lost
           </div>
@@ -46,22 +46,22 @@
           <div class="tab-panel">
             <form [formGroup]="form" (ngSubmit)="submit()" id="editForm">
               <h4>Name</h4>
-              <textarea name="first_name" row="6" class="form-control" id="first_name" formControlName="first_name"
+              <textarea  row="6" class="form-control" id="first_name" formControlName="first_name"
                 [(ngModel)]="user.first_name"></textarea>
               <h4>Surname</h4>
-              <textarea name="surname" row="6" class="form-control" formControlName="last_name"
+              <textarea  row="6" class="form-control" formControlName="last_name"
                 [(ngModel)]="user.last_name"></textarea>
               <h4>Gender</h4>
-              <textarea name="city" row="4" class="form-control" formControlName="gender" [(ngModel)]="user.gender"
+              <textarea  row="4" class="form-control" formControlName="gender" [(ngModel)]="user.gender"
                 placeholder="Male or Famale"></textarea>
               <h4>Address</h4>
-              <textarea name="country" row="6" class="form-control" formControlName="address"
+              <textarea  row="6" class="form-control" formControlName="address"
                 [(ngModel)]="user.address"></textarea>
               <h4>Email</h4>
-              <textarea name="country" row="6" class="form-control" formControlName="email" [(ngModel)]="user.email"
+              <textarea  row="6" class="form-control" formControlName="email" [(ngModel)]="user.email"
                 placeholder="email@email.com"></textarea>
               <h4>Phone</h4>
-              <textarea name="country" row="6" class="form-control" formControlName="phone"
+              <textarea  row="6" class="form-control" formControlName="phone"
                 [(ngModel)]="user.phone"></textarea>
               <div class="card-footer">
                 <button [disabled]="!form.dirty" class="btn  btn-success btn-block" type="submit">

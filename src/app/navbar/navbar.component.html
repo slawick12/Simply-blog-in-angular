@@ -12,22 +12,22 @@
         </li>
       </ul>
       <div class="dropdown mr-5" dropdown>
-          <a class="dropdown-toggle scalable pointer" dropdownToggle (click)="false">
-            Comunity
-          </a>
-          <div class="dropdown-menu  mr-5" *dropdownMenu>
-            <a class="dropdown-item nav-link" [routerLink]="['/user-create']"><i class="fa fa-user">Create User</i></a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item nav-link" [routerLink]="['/user-list']"><i class="fa fa-sign-out">List of user</i></a>
-          </div>
+        <a class="dropdown-toggle scalable pointer" dropdownToggle (click)="false">
+          Comunity
+        </a>
+        <div class="dropdown-menu  mr-5" *dropdownMenu>
+          <a class="dropdown-item nav-link" [routerLink]="['/user-create']"><i class="fa fa-user"> Create User</i></a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item nav-link" [routerLink]="['/user-list']"><i class="fa fa-list-alt"> List of user</i></a>
         </div>
+      </div>
       <div class="dropdown mr-5" dropdown>
         <a class="dropdown-toggle scalable pointer" dropdownToggle (click)="false">
           Blog
         </a>
         <div class="dropdown-menu  mr-5" *dropdownMenu>
-          <a class="dropdown-item nav-link" [routerLink]="['/post-list']"><i class="fa fa-user"></i>List of posts</a>
-          <a class="dropdown-item nav-link" [routerLink]="['/post-create']"><i class="fa fa-user"></i>Create post</a>
+          <a class="dropdown-item nav-link" [routerLink]="['/post-list']"><i class="fa fa-list"> List of posts</i></a>
+          <a class="dropdown-item nav-link" [routerLink]="['/post-create']"><i class="fa fa-paste"> Create post</i></a>
         </div>
       </div>
     </div>

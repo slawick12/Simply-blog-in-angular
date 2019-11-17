@@ -4,6 +4,7 @@ import { ActivatedRoute, Params } from "@angular/router";
 import { UserService } from "src/app/shared/services/user.service";
 import { switchMap } from "rxjs/operators";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { User } from 'src/app/shared/services/interfaces';
 
 @Component({
   selector: "app-user-page",
@@ -12,16 +13,15 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 })
 export class UserPageComponent implements OnInit {
   form: FormGroup;
-  submited = false;
+  submited:boolean = false;
   uSub: Subscription;
-  user: any;
+  user:any;
   constructor(
     private route: ActivatedRoute,
     private userService: UserService
   ) {}
 
   ngOnInit() {
-    console.log(this.user);
     this.user = this.userService
       .getById(this.route.snapshot.params["id"])
       .subscribe(data => {
@@ -49,7 +49,8 @@ export class UserPageComponent implements OnInit {
         address:this.form.value.address
       })
       .subscribe(() => {
-        this.submited = false;
+        console.log(this.user)
+        this.submited = !this.submited;
       });
   }
 }

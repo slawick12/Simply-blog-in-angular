@@ -16,6 +16,7 @@ export class ShowPostComponent implements OnInit {
   comments: Commentary;
   form: FormGroup;
   users: any;
+  id = this.route.snapshot.params["id"];
   constructor(
     private postService: PostService,
     private route: ActivatedRoute,
@@ -29,19 +30,14 @@ export class ShowPostComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.post = this.postService
-      .getById(this.route.snapshot.params["id"])
-      .subscribe(data => {
-        this.post = data["result"];
-      });
-    this.post = this.postService
-      .getCommentsByIdPost(this.route.snapshot.params["id"])
-      .subscribe(com => {
-        console.log(com);
-        this.comments = com["result"];
-      });
+    this.post = this.postService.getById(this.id).subscribe(data => {
+      this.post = data["result"];
+    });
+    this.post = this.postService.getCommentsByIdPost(this.id).subscribe(com => {
+      console.log(com);
+      this.comments = com["result"];
+    });
     this.form = new FormGroup({
-      post_id: new FormControl(null, Validators.required),
       name: new FormControl(null, Validators.required),
       body: new FormControl(null, Validators.required),
       email: new FormControl(null, [Validators.required, Validators.email])
@@ -50,9 +46,10 @@ export class ShowPostComponent implements OnInit {
 
   submit() {
     const comment: Commentary = {
-      post_id: this.form.value.post_id,
       body: this.form.value.body,
-      email: this.form.value.email
+      email: this.form.value.email,
+      name: this.form.value.name,
+      id:this.id
     };
     this.postService.createComment(comment).subscribe(() => {
       this.form.reset();

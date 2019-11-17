@@ -15,6 +15,7 @@
             <p>{{post['body']}}</p>
             <a [routerLink]="['/post-list',post['id']]" routerLinkActive="router-link-active"  class="btn-more">Open</a>
             <a [routerLink]="['/post-list/update',post['id']]" routerLinkActive="router-link-active"  class="btn-more mr-2">Update</a>
+            <a [routerLink]="['/post-create']" routerLinkActive="router-link-active"  class="btn-more mr-2">Create your own post</a>
             <app-comments [post_id]='post.id'></app-comments>
           </div>
           <footer class="post-footer">

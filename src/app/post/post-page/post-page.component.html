@@ -9,17 +9,19 @@
           <div class="form-group">
             <label class="col-form-label-lg" for="exampleInput">Title</label>
             <div class="input-group group-with-icon">
-              <textarea type="text" class="form-control form-control-lg inputCustom"  [(ngModel)]="post.title" formControlName="title"id="exampleInput"
-                aria-describedby="emailHelp" placeholder="Enter email" name="email"></textarea>
-              <label for="exampleInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+              <textarea type="text" class="form-control form-control-lg inputCustom" [(ngModel)]="post.title"
+                formControlName="title" id="exampleInput" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email"></textarea>
+
             </div>
           </div>
           <div class="form-group">
             <label class="col-form-label-lg" for="exampleInput">Body</label>
             <div class="input-group group-with-icon">
-              <textarea type="text" class="form-control form-control-lg inputCustom"[(ngModel)]="post.body" formControlName="body" id="exampleInput"
-                aria-describedby="emailHelp" placeholder="Enter email" name="email" ></textarea>
-              <label for="exampleInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
+              <textarea type="text" class="form-control form-control-lg inputCustom" style='height: 500px;' [(ngModel)]="post.body"
+                formControlName="body" id="exampleInput" aria-describedby="emailHelp" placeholder="Enter email"
+                name="email"></textarea>
+
             </div>
           </div>
           <div class="form-group text-center">

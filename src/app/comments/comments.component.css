@@ -49,6 +49,7 @@ body {
 .comments-list {
   margin-top: 30px;
   position: relative;
+  margin-right: 30px;
 }
 
 /**
@@ -137,7 +138,7 @@ body {
   display: block;
   border-width: 10px 12px 10px 0;
   border-style: solid;
-  border-color: transparent #FCFCFC;
+  border-color: transparent rgba(219, 214, 214, 0.589);
   top: 8px;
   left: -11px;
 }
