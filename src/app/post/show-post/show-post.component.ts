@@ -49,7 +49,7 @@ export class ShowPostComponent implements OnInit {
       body: this.form.value.body,
       email: this.form.value.email,
       name: this.form.value.name,
-      id:this.id
+      post_id:this.id
     };
     this.postService.createComment(comment).subscribe(() => {
       this.form.reset();

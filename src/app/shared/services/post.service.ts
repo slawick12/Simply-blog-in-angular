@@ -23,7 +23,7 @@ export class PostService {
       `${environment.restURL}/comments?access-token=${environment.apiKey}`
     );
   }
-  getCommentsByIdPost(id:string): Observable<Commentary[]> {
+  getCommentsByIdPost(id: string): Observable<Commentary[]> {
     return this.http.get<Commentary[]>(
       `${environment.restURL}/comments/${id}?access-token=${environment.apiKey}`
     );
