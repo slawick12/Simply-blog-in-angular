@@ -1,62 +1,88 @@
 <div class="main d-flex align-items-center">
-    <div class="container">
-      <div class="row d-flex ">
-        <div class="col-xs-8 col-sm-9 col-lg-6 signup-container pl-4 pr-4 my-4">
-          <h2 class="text-center text-primary mt-4">Create User</h2>
-          <form [formGroup]="form" (ngSubmit)="submit()">
-            <!-- name -->
-            <div class="form-group">
-              <div class="input-group group-with-icon">
-                <input required type="text" class="form-control form-control-md inputCustom" id="nameInput"
-                  placeholder="Enter your name" name="name" formControlName="first_name">
-                  <label for="nameInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
-              </div>
+  <div class="container">
+    <div class="row d-flex ">
+      <div class="col-xs-8 col-sm-9 col-lg-6 signup-container pl-4 pr-4 my-4">
+        <h2 class="text-center text-primary mt-4">Create User</h2>
+        <form [formGroup]="form" (ngSubmit)="submit()">
+          <!-- name -->
+          <div class="form-group">
+            <div class="input-group group-with-icon" [ngClass]="{invallid: form.get('first_name').touched && form.get('first_name').invalid}">
+              <input required type="text" class="form-control form-control-md inputCustom" id="nameInput"
+                placeholder="Enter your name" name="name" formControlName="first_name">
+              <label for="nameInput"><i class="fa fa-user fa-lg" aria-hidden="true"></i></label>
             </div>
-            <!-- surname -->
-            <div class="form-group">
-              <div class="input-group group-with-icon">
-                  <i class="fa fa-users icon"></i>
-                <input required type="text" class="form-control form-control-md inputCustom" id="surnameInput"
-                  placeholder="Enter your surname" name="surname" formControlName="last_name">
-              </div>
+            <div *ngIf="form.get('first_name').touched && form.get('first_name').invalid" class="validation">
+              <small *ngIf="form.get('first_name').errors.required">Field cannot be empty</small>
             </div>
-            <!-- gender -->
-            <div class="form-group">
-              <div class="input-group group-with-icon">
-                  <i class="fa fa-venus-mars icon"></i>
-                <input required type="text" class="form-control form-control-md inputCustom" id="gender"
-                  placeholder="Male or famale" name="gender" formControlName="gender">
-              </div>
+          </div>
+          <!-- surname -->
+          <div class="form-group">
+            <div class="input-group group-with-icon" [ngClass]="{invallid: form.get('last_name').touched && form.get('last_name').invalid}">
+              <i class="fa fa-users icon"></i>
+              <input required type="text" class="form-control form-control-md inputCustom" id="surnameInput"
+                placeholder="Enter your surname" name="surname" formControlName="last_name">
             </div>
-            <!-- email -->
-            <div class="form-group">
-                <div class="input-group group-with-icon">
-                    <i class="fa fa-envelope-open icon"></i>
-                  <input required type="text" class="form-control form-control-md inputCustom" id="email"
-                    placeholder="Enter your email" name="email" formControlName="email">
-                </div>
-              </div>
-            <!-- address -->
-            <div class="form-group">
-              <div class="input-group group-with-icon">
-                  <i class="fa fa-flag icon"></i>
-                <input required type="text" class="form-control form-control-md inputCustom" id="address"
-                  placeholder="Enter your address" name="address" formControlName="address">
-              </div>
+            <div *ngIf="form.get('last_name').touched && form.get('last_name').invalid" class="validation">
+              <small *ngIf="form.get('last_name').errors.required">Field cannot be empty</small>
             </div>
-            <!-- phone -->
-            <div class="form-group">
-                <div class="input-group group-with-icon">
-                    <i class="fa fa-phone icon"></i>
-                  <input required type="text" class="form-control form-control-md inputCustom" id="emailInput"
-                    placeholder="Enter your phone" name="phone" formControlName="phone">
-                </div>
-              </div>
-            </form> 
-            <div class="form-group text-center">
-              <button [disabled]="form.invalid" class="btn btn-success button-custom-style font-weight-bold mt-3 mr-3" (click)="submit()">Create</button>
+          </div>
+          <!-- gender -->
+          <div class="form-group">
+            <div class="input-group" [ngClass]="{invallid: form.get('gender').touched && form.get('gender').invalid}">
+            <select formControlName="gender" class='form-control inputCustom form-control-md'>
+              <option selected>Choose your gender: </option>
+              <option>
+                male
+              </option>
+              <option>
+                female
+              </option>
+            </select>
+          </div>
+          </div>
+          <div *ngIf="form.get('gender').touched && form.get('gender').invalid" class="validation">
+            <small *ngIf="form.get('gender').errors.required">Field cannot be empty</small>
+          </div>
+          <!-- email -->
+          <div class="form-group">
+            <div class="input-group group-with-icon" [ngClass]="{invallid: form.get('email').touched && form.get('email').invalid}">
+              <i class="fa fa-envelope-open icon"></i>
+              <input required type="text" class="form-control form-control-md inputCustom" id="email"
+                placeholder="email@email.com" name="email" formControlName="email">
             </div>
+            <div *ngIf="form.get('email').touched && form.get('email').invalid" class="validation">
+              <small *ngIf="form.get('email').errors.required">Field cannot be empty</small>
+              <small *ngIf="form.get('email').errors.email">Invalid email adress</small>
+            </div>
+          </div>
+          <!-- address -->
+          <div class="form-group">
+            <div class="input-group group-with-icon" [ngClass]="{invallid: form.get('address').touched && form.get('address').invalid}">
+              <i class="fa fa-flag icon"></i>
+              <input required type="text" class="form-control form-control-md inputCustom" id="address"
+                placeholder="Enter your address" name="address" formControlName="address">
+            </div>
+            <div *ngIf="form.get('address').touched && form.get('address').invalid" class="validation">
+              <small *ngIf="form.get('address').errors.required">Field cannot be empty</small>
+            </div>
+          </div>
+          <!-- phone -->
+          <div class="form-group">
+            <div class="input-group group-with-icon" [ngClass]="{invallid: form.get('phone').touched && form.get('phone').invalid}">
+              <i class="fa fa-phone icon"></i>
+              <input required type="text" class="form-control form-control-md inputCustom" id="emailInput"
+                placeholder="Enter your phone" name="phone" formControlName="phone">
+            </div>
+            <div *ngIf="form.get('phone').touched && form.get('phone').invalid" class="validation">
+              <small *ngIf="form.get('phone').errors.required">Field cannot be empty</small>
+            </div>
+          </div>
+        </form>
+        <div class="form-group text-center">
+          <button class="btn btn-success button-custom-style font-weight-bold mt-3 mr-3" [disabled]="form.invalid"
+            (click)="submit()">Create</button>
         </div>
       </div>
     </div>
   </div>
+</div>

@@ -2,9 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { UserService } from "src/app/shared/services/user.service";
 import { User } from "src/app/shared/services/interfaces";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
-import { ActivatedRoute } from '@angular/router';
-
-
+import { AlertifyService } from "src/app/shared/services/alert.service";
 
 @Component({
   selector: "app-user-create",
@@ -13,7 +11,10 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class UserCreateComponent implements OnInit {
   form: FormGroup;
-  constructor(private userService: UserService, private route: ActivatedRoute) {}
+  constructor(
+    private userService: UserService,
+    private alertify: AlertifyService
+  ) {}
 
   ngOnInit() {
     this.form = new FormGroup({
@@ -31,11 +32,17 @@ export class UserCreateComponent implements OnInit {
       last_name: this.form.value.last_name,
       gender: this.form.value.gender,
       email: this.form.value.email,
-      phone:this.form.value.phone,
-      address:this.form.value.address
+      phone: this.form.value.phone,
+      address: this.form.value.address
     };
-    this.userService.createUser(user).subscribe(() => {
-      this.form.reset()
-    });
+    this.userService.createUser(user).subscribe(
+      success => {
+        this.form.reset();
+        this.alertify.success("User was created");
+      },
+      error => {
+        this.alertify.success("Something went wrong");
+      }
+    );
   }
 }
